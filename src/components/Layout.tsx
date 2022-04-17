@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-// import Seo from "../components/Seo"
+import Seo from '../components/Seo';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -11,7 +11,7 @@ type MainLayoutProps = {
 const Layout = ({ children }: MainLayoutProps) => {
   return (
     <>
-      {/* <Seo /> */}
+      <Seo />
 
       <Header />
       <main>{children}</main>
