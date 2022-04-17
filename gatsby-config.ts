@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: 'Denise Chan',
     titleTemplate: '%s · The Real Hero',
     description: 'Senior Visual Designer',
-    url: 'https://www.denisechan.design',
+    siteUrl: 'https://www.denisechan.design',
     // image: "/snape.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
     instagramUrl: 'https://www.instagram.com/denisechandesign',
     linkedinUrl: 'Senior Visual Designer',
