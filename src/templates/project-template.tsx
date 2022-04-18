@@ -37,7 +37,7 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
 export default ProjectTemplate;
 
 export const query = graphql`
-  query getPost($slug: String!) {
+  query getProjects($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         featuredImage
