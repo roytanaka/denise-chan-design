@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Layout from '../components/Layout';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 
 type ProjectType = {
   node: {
     frontmatter: {
       title: string;
       slug: string;
+      featuredImage: ImageDataLike;
     };
     id: string;
   };
@@ -26,6 +28,11 @@ const getProjects = graphql`
           frontmatter {
             title
             slug
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 800, formats: [AUTO, WEBP, AVIF])
+              }
+            }
           }
           id
         }
@@ -44,13 +51,17 @@ const IndexPage = () => {
     <Layout>
       <main>
         <h1>Home: Denise Chan</h1>
-        <pre>{JSON.stringify(projects, null, 2)}</pre>
         <ul>
-          {projects.map(({ node }) => (
-            <li key={node.id}>
-              <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
-            </li>
-          ))}
+          {projects.map(({ node }) => {
+            const img = getImage(node.frontmatter.featuredImage);
+            if (!img) return;
+            return (
+              <li key={node.id}>
+                <GatsbyImage image={img} alt="" />
+                <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
+              </li>
+            );
+          })}
         </ul>
       </main>
     </Layout>

@@ -1,5 +1,7 @@
 import type { GatsbyConfig } from 'gatsby';
 
+console.log(__dirname);
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'Denise Chan',
@@ -24,7 +26,6 @@ const config: GatsbyConfig = {
         name: 'images',
         path: './src/images/',
       },
-      __key: 'images',
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -32,7 +33,6 @@ const config: GatsbyConfig = {
         name: 'pages',
         path: './src/pages/',
       },
-      __key: 'pages',
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -40,7 +40,6 @@ const config: GatsbyConfig = {
         name: 'projects',
         path: './src/projects/',
       },
-      __key: 'projects',
     },
   ],
 };

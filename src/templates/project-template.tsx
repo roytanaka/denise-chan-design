@@ -8,28 +8,24 @@ type DataProps = {
   mdx: {
     frontmatter: {
       title: string;
-      featuredImage: string;
-      images: [string];
+      images: object[];
       slug: string;
-      tags: [string];
+      tags: string[];
     };
     body: string;
   };
 };
 
 const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
-  const { title, featuredImage, images, slug, tags } = data.mdx.frontmatter;
+  const { title, images, slug, tags } = data.mdx.frontmatter;
+
   const { body } = data.mdx;
 
   return (
     <Layout>
       <h1>{title}</h1>
-      <pre>
-        {featuredImage}
-        {JSON.stringify(images, null, 2)}
-      </pre>
-
       <MDXRenderer>{body}</MDXRenderer>
+      {images && images.map((img) => <GatsbyImage image={getImage(img)} />)}
     </Layout>
   );
 };
@@ -40,8 +36,11 @@ export const query = graphql`
   query getProjects($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
-        featuredImage
-        images
+        images {
+          childImageSharp {
+            gatsbyImageData(width: 100, formats: [AUTO, WEBP, AVIF])
+          }
+        }
         slug
         tags
         title
