@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
@@ -8,7 +8,7 @@ type DataProps = {
   mdx: {
     frontmatter: {
       title: string;
-      images: object[];
+      images: ImageDataLike[];
       slug: string;
       tags: string[];
     };
@@ -25,7 +25,12 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
     <Layout>
       <h1>{title}</h1>
       <MDXRenderer>{body}</MDXRenderer>
-      {images && images.map((img) => <GatsbyImage image={getImage(img)} />)}
+      {images &&
+        images.map((img) => {
+          const image = getImage(img);
+          if (!image) return;
+          return <GatsbyImage image={image} alt="" />;
+        })}
     </Layout>
   );
 };
