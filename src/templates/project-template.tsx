@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
-import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
+import { ImageDataLike } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Slider from '../components/Slider';
 
 type DataProps = {
   mdx: {
     frontmatter: {
       title: string;
-      images: ImageDataLike[];
+      images: any[];
       slug: string;
       tags: string[];
     };
@@ -25,12 +26,7 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
     <Layout>
       <h1>{title}</h1>
       <MDXRenderer>{body}</MDXRenderer>
-      {images &&
-        images.map((img) => {
-          const image = getImage(img);
-          if (!image) return;
-          return <GatsbyImage image={image} alt="" />;
-        })}
+      {images && <Slider images={images} />}
     </Layout>
   );
 };
@@ -42,8 +38,18 @@ export const query = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         images {
-          childImageSharp {
-            gatsbyImageData(width: 100, formats: [AUTO, WEBP, AVIF])
+          description
+          file {
+            childImageSharp {
+              gatsbyImageData(
+                width: 800
+                formats: [AUTO, WEBP, AVIF]
+                aspectRatio: 1
+                transformOptions: { fit: CONTAIN }
+                backgroundColor: "rgb(255,255,255)"
+              )
+            }
+            id
           }
         }
         slug
