@@ -1,7 +1,5 @@
 import type { GatsbyConfig } from 'gatsby';
 
-console.log(__dirname);
-
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'Denise Chan',
