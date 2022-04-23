@@ -59,21 +59,13 @@ const Slider = ({ images }: ImagePropType) => {
   return (
     <div className={slider} ref={emblaRef}>
       <div className={slider__container}>
-        {images.map((img, index) => {
-          const image = getSrcSet(img.file.childImageSharp);
-          const placeholder = getImage(img.file.childImageSharp)?.placeholder
-            ?.fallback;
-          if (!image) return;
-          return (
-            <Slide
-              key={img.file.id}
-              imgSrc={image}
-              inView={slidesInView.indexOf(index) > -1}
-              description={img.description}
-              placeholder={placeholder}
-            />
-          );
-        })}
+        {images.map((img, index) => (
+          <Slide
+            key={img.file.id}
+            image={img}
+            inView={slidesInView.indexOf(index) > -1}
+          />
+        ))}
       </div>
       <button
         className="embla__prev"
