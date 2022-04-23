@@ -53,7 +53,6 @@ export const query = graphql`
                 aspectRatio: 1
                 transformOptions: { fit: CONTAIN }
                 backgroundColor: "rgb(255,255,255)"
-                placeholder: BLURRED
               )
             }
             id
