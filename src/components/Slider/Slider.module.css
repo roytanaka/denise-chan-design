@@ -1,16 +1,16 @@
-.embla {
+.slider {
   outline: 1px solid red;
-  overflow: auto;
+  overflow: hidden;
   margin-inline: auto;
   max-inline-size: 80ch;
 }
-.embla__container {
+.slider__container {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 100%; /* Each slide covers 80% of the viewport */
   align-items: center;
 }
-.embla__slide {
+.slider__slide {
   display: flex;
   align-items: center;
 }

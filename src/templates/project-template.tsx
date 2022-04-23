@@ -8,10 +8,16 @@ import Slider from '../components/Slider';
 type DataProps = {
   mdx: {
     frontmatter: {
-      title: string;
-      images: any[];
+      images: {
+        description: string;
+        file: {
+          childImageSharp: ImageDataLike;
+          id: string;
+        };
+      }[];
       slug: string;
       tags: string[];
+      title: string;
     };
     body: string;
   };
@@ -47,6 +53,7 @@ export const query = graphql`
                 aspectRatio: 1
                 transformOptions: { fit: CONTAIN }
                 backgroundColor: "rgb(255,255,255)"
+                placeholder: BLURRED
               )
             }
             id
