@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { getImage, getSrcSet, ImageDataLike } from 'gatsby-plugin-image';
 import useEmblaCarousel from 'embla-carousel-react';
-import { slider, slider__container, slider__slide } from './Slider.module.css';
+import './Slider.css';
 import { Slide } from './Slide';
 
 type ImagePropType = {
@@ -18,17 +18,24 @@ const Slider = ({ images }: ImagePropType) => {
   const [emblaRef, embla] = useEmblaCarousel();
 
   const [slidesInView, setSlidesInView] = useState<Array<number>>([]);
+
   const findSlidesInView = useCallback(() => {
     if (!embla) return;
-
     setSlidesInView((slidesInView) => {
       if (slidesInView.length === embla.slideNodes().length) {
         embla.off('select', findSlidesInView);
       }
-      const inView: number[] = embla
-        .slidesInView(true)
-        .filter((index) => slidesInView.indexOf(index) === -1);
-      return slidesInView.concat(inView);
+      const inView: number[] = embla.slidesInView(true);
+
+      const maxIndexInView = Math.max(...inView);
+      if (maxIndexInView !== images.length - 1) {
+        inView.push(maxIndexInView + 1);
+      }
+
+      const viewedSlides = inView
+        .filter((index) => slidesInView.indexOf(index) === -1)
+        .filter((index) => index < images.length);
+      return slidesInView.concat(viewedSlides);
     });
   }, [embla, setSlidesInView]);
 
@@ -57,8 +64,8 @@ const Slider = ({ images }: ImagePropType) => {
   }, [embla]);
 
   return (
-    <div className={slider} ref={emblaRef}>
-      <div className={slider__container}>
+    <div className="slider" ref={emblaRef}>
+      <div className="slider__container">
         {images.map((img, index) => (
           <Slide
             key={img.file.id}

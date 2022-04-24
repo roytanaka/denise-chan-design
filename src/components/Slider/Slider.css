@@ -14,3 +14,11 @@
   display: flex;
   align-items: center;
 }
+.slider__img {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 800ms;
+}
+.slider__has-loaded {
+  opacity: 1;
+}
