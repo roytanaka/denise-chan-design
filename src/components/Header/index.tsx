@@ -1,16 +1,30 @@
 import * as React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
+import './header.css';
 
-const Header = () => {
+const invalidPaths = ['/about', '/contact'];
+
+const isCurrent = ({ location }: { location: Location }) => {
+  if (!invalidPaths.includes(location.pathname)) {
+    return { 'aria-current': 'page' };
+  }
+  return {};
+};
+const Header = ({ ...props }) => {
   return (
-    <header>
+    <header className="main-header">
       <nav>
-        <Link to="/">Work</Link>
+        <Link getProps={isCurrent} {...props} to="/">
+          Work
+        </Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
       </nav>
-      <StaticImage src="../../images/dc-logo.png" width={135} alt="DC logo" />
+      <Link className="main-header__logo" to="/">
+        <StaticImage src="../../images/dc-logo.png" width={135} alt="DC logo" />
+        <p>Graphic Designer</p>
+      </Link>
     </header>
   );
 };
