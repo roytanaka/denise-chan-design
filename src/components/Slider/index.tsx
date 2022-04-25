@@ -5,6 +5,7 @@ import './Slider.css';
 import { Slide } from './Slide';
 
 import { ImageProps } from '../../templates/project-template';
+import Thumb from './Thumb';
 
 type ImagePropType = {
   images: ImageProps[];
@@ -20,6 +21,7 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
   const [slidesInView, setSlidesInView] = useState<Array<number>>([]);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const findSlidesInView = useCallback(() => {
     if (!embla) return;
@@ -42,10 +44,12 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
   }, [embla, setSlidesInView]);
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
+    if (!embla || !emblaThumbs) return;
+    setSelectedIndex(embla.selectedScrollSnap());
+    emblaThumbs.scrollTo(embla.selectedScrollSnap());
     setPrevBtnDisabled(!embla.canScrollPrev());
     setNextBtnDisabled(!embla.canScrollNext());
-  }, [embla]);
+  }, [embla, emblaThumbs, setSelectedIndex]);
 
   useEffect(() => {
     if (!embla) return;
@@ -61,6 +65,14 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
   const scrollNext = useCallback(() => {
     embla && embla.scrollNext();
   }, [embla]);
+
+  const onThumbClick = useCallback(
+    (index) => {
+      if (!embla || !emblaThumbs) return;
+      if (emblaThumbs.clickAllowed()) embla.scrollTo(index);
+    },
+    [embla, emblaThumbs]
+  );
 
   return (
     <>
@@ -90,21 +102,16 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
         </button>
       </div>
       <div className="embla embla--thumb">
-        <div className="embla__viewport" ref={thumbsRef}>
-          <div className="embla__container embla__container--thumb">
-            {thumbs.map((thumb) => {
-              const img = getImage(thumb.file.childImageSharp);
-              return (
-                <div key={thumb.file.id}>
-                  {img && (
-                    <GatsbyImage
-                      image={img}
-                      alt={`${thumb.description} thumbnail`}
-                    />
-                  )}
-                </div>
-              );
-            })}
+        <div className="slider" ref={thumbsRef}>
+          <div className="slider__container--thumb">
+            {thumbs.map((thumb, index) => (
+              <Thumb
+                key={thumb.file.id}
+                thumb={thumb}
+                onClick={() => onThumbClick(index)}
+                selected={index === selectedIndex}
+              />
+            ))}
           </div>
         </div>
       </div>

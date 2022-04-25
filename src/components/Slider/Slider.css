@@ -1,5 +1,4 @@
 .slider {
-  outline: 1px solid red;
   overflow: hidden;
   margin-inline: auto;
   max-inline-size: 80ch;
@@ -21,4 +20,45 @@
 }
 .slider__has-loaded {
   opacity: 1;
+}
+
+.slider__container--thumb {
+  display: flex;
+  user-select: none;
+}
+
+.slide-thumb {
+  min-width: 20%;
+  max-height: 6rem;
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.slide-thumb__button {
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide-thumb__button > * {
+  height: 100%;
+  filter: grayscale(100%) contrast(50%) brightness(120%);
+  transition: filter 200ms;
+  transition: all 200ms ease-in-out;
+}
+
+.slide-thumb__button:hover > *,
+.slide-thumb__button:focus > * {
+  transform: scale(1.1);
+  filter: grayscale(80%);
+}
+.slide-thumb__selected .slide-thumb__button > * {
+  filter: none;
 }
