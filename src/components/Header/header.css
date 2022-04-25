@@ -2,10 +2,9 @@
   font-family: 'Raleway';
   color: var(--gray-7);
   display: flex;
-  gap: var(--size-6);
-  flex-flow: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  gap: var(--size-3);
+  flex-flow: column;
+  align-items: center;
   padding: var(--size-5) var(--size-7);
   & a {
     text-decoration: none;
@@ -29,8 +28,17 @@
   }
   & .main-header__logo {
     min-inline-size: 8rem;
-    margin-inline-start: auto;
     text-align: end;
     text-transform: uppercase;
+    & p {
+      font-size: 0.85rem;
+    }
+  }
+}
+@media (--sm-n-above) {
+  .main-header {
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 }
