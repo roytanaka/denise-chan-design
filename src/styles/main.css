@@ -2,3 +2,4 @@
 @import 'open-props/postcss/normalize';
 
 @import './global.css';
+@import './utilities.css';
