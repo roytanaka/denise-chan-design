@@ -6,16 +6,18 @@
   flex-flow: wrap;
   justify-content: center;
   align-items: flex-start;
-  padding: var(--size-5) var(--size-4);
+  padding: var(--size-5) var(--size-7);
   & a {
     text-decoration: none;
+    letter-spacing: 0.1em;
   }
   & nav {
     display: flex;
-    gap: var(--size-5);
+    gap: var(--size-6);
     & a {
       text-transform: lowercase;
       line-height: 1;
+      margin-block: var(--size-2);
       &:hover {
         border-block-end: 2px solid #b5d4a0;
       }
