@@ -49,21 +49,19 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <main>
-        <h1>Home: Denise Chan</h1>
-        <ul>
-          {projects.map(({ node }) => {
-            const img = getImage(node.frontmatter.featuredImage);
-            if (!img) return;
-            return (
-              <li key={node.id}>
-                <GatsbyImage image={img} alt="" />
-                <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </main>
+      <h1>Home: Denise Chan</h1>
+      <ul>
+        {projects.map(({ node }) => {
+          const img = getImage(node.frontmatter.featuredImage);
+          if (!img) return;
+          return (
+            <li key={node.id}>
+              <GatsbyImage image={img} alt="" />
+              <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
+            </li>
+          );
+        })}
+      </ul>
     </Layout>
   );
 };
