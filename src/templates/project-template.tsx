@@ -77,8 +77,14 @@ export const query = graphql`
           description
           file {
             childImageSharp {
-              gatsbyImageData(width: 150, formats: [AUTO, WEBP, AVIF])
+              gatsbyImageData(
+                width: 150
+                height: 115
+                formats: [AUTO, WEBP, AVIF]
+                transformOptions: { fit: INSIDE, cropFocus: ATTENTION }
+              )
             }
+            id
           }
         }
       }
