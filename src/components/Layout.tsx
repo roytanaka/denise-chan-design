@@ -4,6 +4,9 @@ import Seo from '../components/Seo';
 import Footer from './Footer';
 import Header from './Header';
 import { Helmet } from 'react-helmet';
+import '@fontsource/open-sans';
+import '@fontsource/raleway';
+import '@styles/main.css';
 
 type MainLayoutProps = {
   children?: React.ReactNode;
