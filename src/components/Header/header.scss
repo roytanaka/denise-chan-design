@@ -35,9 +35,13 @@
       font-size: 0.85rem;
     }
   }
-}
-@media (--sm-n-above) {
-  .main-header {
+  .logo {
+    width: 6.5rem;
+    color: var(--gray-5);
+    margin-inline-start: auto;
+    margin-block-end: var(--size-2);
+  }
+  @media (--sm-n-above) {
     flex-flow: row;
     justify-content: space-between;
     align-items: flex-start;
