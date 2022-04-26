@@ -5,7 +5,7 @@
   gap: var(--size-3);
   flex-flow: column;
   align-items: center;
-  padding: var(--size-5) var(--size-7);
+  padding: var(--size-2) var(--size-7);
   & a {
     text-decoration: none;
     letter-spacing: 0.1em;
@@ -17,6 +17,7 @@
       text-transform: lowercase;
       line-height: 1;
       margin-block: var(--size-2);
+      padding-inline: 0;
       &:hover {
         border-block-end: 2px solid #b5d4a0;
       }
@@ -40,5 +41,6 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: flex-start;
+    padding-block: var(--size-5);
   }
 }

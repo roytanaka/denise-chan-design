@@ -6,7 +6,9 @@ import Header from './Header';
 import { Helmet } from 'react-helmet';
 import '@fontsource/open-sans';
 import '@fontsource/raleway';
-import '@styles/main.css';
+import '@fontsource/raleway/100.css';
+import '@styles/open-props.css';
+import '@styles/main.scss';
 
 type MainLayoutProps = {
   children?: React.ReactNode;
@@ -18,7 +20,7 @@ const Layout = ({ children }: MainLayoutProps) => {
       <Seo />
       <Helmet htmlAttributes={{ lang: 'en', dir: 'ltr' }} />
       <Header />
-      <main>{children}</main>
+      <main className="bg-gray main-padding">{children}</main>
       <Footer />
     </>
   );

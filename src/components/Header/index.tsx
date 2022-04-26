@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
-import './header.css';
+import './header.scss';
 
 const invalidPaths = ['/about', '/contact'];
 

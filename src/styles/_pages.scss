@@ -1,0 +1,12 @@
+.about-content {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: var(--size-5);
+  div {
+    flex: 1 1 20rem;
+  }
+  .about-content__portrait {
+    flex-grow: 0;
+  }
+}

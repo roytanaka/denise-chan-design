@@ -1,0 +1,27 @@
+.bg-gray {
+  background-color: var(--gray-3);
+}
+
+.main-padding {
+  padding-block: var(--size-8);
+}
+
+.flow-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flow-content > * {
+  margin-block: 0;
+}
+
+.flow-content > * + * {
+  margin-block-start: var(--size-4);
+}
+
+.wrapper {
+  max-inline-size: 65rem;
+  margin-inline: auto;
+  padding: 0 var(--size-3);
+}
