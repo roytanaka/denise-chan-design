@@ -1,5 +1,4 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import useEmblaCarousel from 'embla-carousel-react';
 import './Slider.css';
 import { Slide } from './Slide';
@@ -9,10 +8,9 @@ import Thumb from './Thumb';
 
 type ImagePropType = {
   images: ImageProps[];
-  thumbs: ImageProps[];
 };
 
-const Slider = ({ images, thumbs }: ImagePropType) => {
+const Slider = ({ images }: ImagePropType) => {
   const [emblaRef, embla] = useEmblaCarousel({ skipSnaps: true });
   const [thumbsRef, emblaThumbs] = useEmblaCarousel({
     containScroll: 'keepSnaps',
@@ -80,7 +78,7 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
         <div className="slider__container">
           {images.map((img, index) => (
             <Slide
-              key={img.file.id}
+              key={img.id}
               image={img}
               inView={slidesInView.indexOf(index) > -1}
             />
@@ -104,9 +102,9 @@ const Slider = ({ images, thumbs }: ImagePropType) => {
       <div className="embla embla--thumb">
         <div className="slider" ref={thumbsRef}>
           <div className="slider__container--thumb">
-            {thumbs.map((thumb, index) => (
+            {images.map((thumb, index) => (
               <Thumb
-                key={thumb.file.id}
+                key={thumb.id}
                 thumb={thumb}
                 onClick={() => onThumbClick(index)}
                 selected={index === selectedIndex}

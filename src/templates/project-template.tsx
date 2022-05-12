@@ -1,37 +1,36 @@
 import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
-import { ImageDataLike } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Slider from '../components/Slider';
 
 export type ImageProps = {
-  description: string;
-  file: {
-    childImageSharp: ImageDataLike;
-    id: string;
+  secure_url: string;
+  context: {
+    custom?: {
+      alt: string;
+    };
   };
+  id: string;
 };
 type DataProps = {
+  allCloudinaryMedia: {
+    nodes: ImageProps[];
+  };
   mdx: {
     frontmatter: {
-      images: ImageProps[];
       slug: string;
       tags: string[];
       title: string;
     };
     body: string;
   };
-  thumbs: {
-    frontmatter: {
-      images: ImageProps[];
-    };
-  };
 };
 
 const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
-  const { title, images, tags } = data.mdx.frontmatter;
-  const { images: thumbs } = data.thumbs.frontmatter;
+  const { title, tags } = data.mdx.frontmatter;
+
+  const { nodes: images } = data.allCloudinaryMedia;
 
   const { body } = data.mdx;
 
@@ -39,7 +38,7 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
     <Layout>
       <h1>{title}</h1>
       <MDXRenderer>{body}</MDXRenderer>
-      {images && <Slider images={images} thumbs={thumbs} />}
+      {images && <Slider images={images} />}
     </Layout>
   );
 };
@@ -47,47 +46,26 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
 export default ProjectTemplate;
 
 export const query = graphql`
-  query getProjects($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        images {
-          description
-          file {
-            childImageSharp {
-              gatsbyImageData(
-                width: 800
-                formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 1
-                transformOptions: { fit: CONTAIN }
-                backgroundColor: "rgb(255,255,255)"
-              )
-            }
-            id
+  query getProjects($slug: String!, $projectFolder: String!) {
+    allCloudinaryMedia(filter: { folder: { eq: $projectFolder } }) {
+      nodes {
+        secure_url
+        context {
+          custom {
+            alt
           }
         }
+        id
+        folder
+      }
+    }
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
         slug
         tags
         title
       }
       body
-    }
-    thumbs: mdx(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        images {
-          description
-          file {
-            childImageSharp {
-              gatsbyImageData(
-                width: 150
-                height: 115
-                formats: [AUTO, WEBP, AVIF]
-                transformOptions: { fit: INSIDE, cropFocus: ATTENTION }
-              )
-            }
-            id
-          }
-        }
-      }
     }
   }
 `;

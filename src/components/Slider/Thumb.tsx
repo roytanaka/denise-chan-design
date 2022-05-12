@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import { ImageProps } from '../../templates/project-template';
 
 type ThumbProps = {
@@ -8,13 +8,12 @@ type ThumbProps = {
   selected: boolean;
 };
 const Thumb = ({ thumb, onClick, selected }: ThumbProps) => {
-  const img = getImage(thumb.file.childImageSharp);
+  console.log('🚀 ~ file: Thumb.tsx ~ line 11 ~ Thumb ~ thumb', thumb);
   return (
     <div className={`slide-thumb ${selected ? 'slide-thumb__selected' : ''}`}>
       <button className="slide-thumb__button" onClick={onClick}>
-        {img && (
-          <GatsbyImage image={img} alt={`${thumb.description} thumbnail`} />
-        )}
+        click
+        <img src={thumb.secure_url} alt={`thumbnail`} />
       </button>
     </div>
   );

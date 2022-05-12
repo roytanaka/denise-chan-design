@@ -37,6 +37,7 @@ exports.createPages = async ({ actions, graphql }) => {
       path: slug,
       component: require.resolve('./src/templates/project-template.tsx'),
       context: {
+        projectFolder: `denisechan-design/${slug}`,
         slug: slug,
       },
     });
