@@ -1,3 +1,4 @@
+require('dotenv').config();
 import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
@@ -38,6 +39,18 @@ const config: GatsbyConfig = {
       options: {
         name: 'projects',
         path: './src/projects/',
+      },
+    },
+    {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+        prefix: `denisechan-design/`,
+        context: true,
+        maxResults: 500,
       },
     },
   ],
