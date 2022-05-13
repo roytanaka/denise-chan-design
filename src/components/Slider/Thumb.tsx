@@ -16,7 +16,7 @@ const Thumb = ({ thumb, onClick, selected }: ThumbProps) => {
             'q_auto,f_auto',
             'b_auto,c_lpad,f_auto,h_150,q_auto:low,w_200'
           )}
-          alt={`thumbnail`}
+          alt={`${thumb.context?.custom?.alt || ''} thumbnail`}
         />
       </button>
     </div>
