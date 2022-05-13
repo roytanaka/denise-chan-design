@@ -8,12 +8,16 @@ type ThumbProps = {
   selected: boolean;
 };
 const Thumb = ({ thumb, onClick, selected }: ThumbProps) => {
-  console.log('🚀 ~ file: Thumb.tsx ~ line 11 ~ Thumb ~ thumb', thumb);
   return (
     <div className={`slide-thumb ${selected ? 'slide-thumb__selected' : ''}`}>
       <button className="slide-thumb__button" onClick={onClick}>
-        click
-        <img src={thumb.secure_url} alt={`thumbnail`} />
+        <img
+          src={thumb.secure_url.replace(
+            'q_auto,f_auto',
+            'b_auto,c_lpad,f_auto,h_150,q_auto:low,w_200'
+          )}
+          alt={`thumbnail`}
+        />
       </button>
     </div>
   );
