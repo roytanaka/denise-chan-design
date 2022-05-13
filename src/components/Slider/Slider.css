@@ -1,9 +1,9 @@
-.slider {
-  outline: solid black;
+.slider__slides {
   overflow: hidden;
   margin-inline: auto;
   max-inline-size: 80ch;
   position: relative;
+  margin-block-end: var(--size-2);
 }
 .slider__container {
   display: grid;
@@ -27,11 +27,12 @@
 
 .slider__container--thumb {
   display: flex;
+  gap: var(--size-1);
   user-select: none;
 }
 
 .slide-thumb {
-  min-width: 20%;
+  min-width: 18%;
   max-height: 6rem;
   position: relative;
   flex: 1 1 auto;
@@ -66,10 +67,21 @@
   filter: none;
 }
 .embla__btn {
+  background-color: hsl(var(--gray-2-hsl) / 80%);
   position: absolute;
-  outline: solid red;
   z-index: 10;
   top: 50%;
+  inline-size: var(--size-8);
+  aspect-ratio: var(--ratio-square);
+  border-radius: var(--radius-round);
+  display: grid;
+  place-content: center;
+}
+
+.embla__btn .icon {
+  width: var(--size-6);
+  fill: none;
+  stroke: currentColor;
 }
 
 .embla__btn:disabled {
@@ -77,8 +89,8 @@
 }
 
 [data-btn='prev'] {
-  left: 0;
+  left: var(--size-1);
 }
 [data-btn='next'] {
-  right: 0;
+  right: var(--size-1);
 }

@@ -2,6 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import './Slider.css';
 import { Slide } from './Slide';
+import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline';
 
 import { ImageProps } from '../../templates/project-template';
 import Thumb from './Thumb';
@@ -73,8 +74,8 @@ const Slider = ({ images }: ImagePropType) => {
   );
 
   return (
-    <>
-      <div className="slider" ref={emblaRef}>
+    <div className="slider">
+      <div className="slider__slides" ref={emblaRef}>
         <div className="slider__container">
           {images.map((img, index) => (
             <Slide
@@ -90,6 +91,7 @@ const Slider = ({ images }: ImagePropType) => {
           onClick={scrollPrev}
           disabled={prevBtnDisabled}
         >
+          <ChevronLeftIcon className="icon" />
           <span className="visually-hidden">Previous image</span>
         </button>
         <button
@@ -98,11 +100,12 @@ const Slider = ({ images }: ImagePropType) => {
           onClick={scrollNext}
           disabled={nextBtnDisabled}
         >
+          <ChevronRightIcon className="icon" />
           <span className="visually-hidden">Next image</span>
         </button>
       </div>
       <div className="embla embla--thumb">
-        <div className="slider" ref={thumbsRef}>
+        <div className="slider__slides" ref={thumbsRef}>
           <div className="slider__container--thumb">
             {images.map((thumb, index) => (
               <Thumb
@@ -115,7 +118,7 @@ const Slider = ({ images }: ImagePropType) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
