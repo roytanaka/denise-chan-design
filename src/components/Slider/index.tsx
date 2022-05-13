@@ -85,18 +85,20 @@ const Slider = ({ images }: ImagePropType) => {
           ))}
         </div>
         <button
-          className="embla__prev"
+          className="embla__btn"
+          data-btn="prev"
           onClick={scrollPrev}
           disabled={prevBtnDisabled}
         >
-          Prev
+          <span className="visually-hidden">Previous image</span>
         </button>
         <button
-          className="embla__next"
+          className="embla__btn"
+          data-btn="next"
           onClick={scrollNext}
           disabled={nextBtnDisabled}
         >
-          Next
+          <span className="visually-hidden">Next image</span>
         </button>
       </div>
       <div className="embla embla--thumb">

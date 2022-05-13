@@ -1,7 +1,9 @@
 .slider {
+  outline: solid black;
   overflow: hidden;
   margin-inline: auto;
   max-inline-size: 80ch;
+  position: relative;
 }
 .slider__container {
   display: grid;
@@ -16,6 +18,7 @@
 .slider__img {
   width: 100%;
   opacity: 0;
+  aspect-ratio: 6 / 4;
   transition: opacity 800ms;
 }
 .slider__has-loaded {
@@ -61,4 +64,21 @@
 }
 .slide-thumb__selected .slide-thumb__button > * {
   filter: none;
+}
+.embla__btn {
+  position: absolute;
+  outline: solid red;
+  z-index: 10;
+  top: 50%;
+}
+
+.embla__btn:disabled {
+  cursor: default;
+}
+
+[data-btn='prev'] {
+  left: 0;
+}
+[data-btn='next'] {
+  right: 0;
 }
