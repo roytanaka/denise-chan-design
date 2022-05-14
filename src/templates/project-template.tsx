@@ -37,7 +37,7 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
 
   return (
     <Layout>
-      <section className={styles.project}>
+      <section className={`${styles.project} container`}>
         <div className="flow-content">
           <h1>{title}</h1>
           <MDXRenderer>{body}</MDXRenderer>

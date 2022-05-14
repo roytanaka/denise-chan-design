@@ -36,7 +36,8 @@
     }
   }
   .logo {
-    width: 6.5rem;
+    inline-size: clamp(5rem, 20vw, 7rem);
+    padding-inline-start: 0.5rem;
     color: var(--gray-5);
     margin-block-end: var(--size-2);
     margin-inline-start: auto;

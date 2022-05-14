@@ -6,6 +6,11 @@
   padding-block: var(--size-8);
 }
 
+.container {
+  inline-size: min(85rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
 .flow-content {
   display: flex;
   flex-direction: column;

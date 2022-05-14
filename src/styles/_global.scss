@@ -5,6 +5,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+#gatsby-focus-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,
