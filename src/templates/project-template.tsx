@@ -3,6 +3,7 @@ import { Link, graphql, PageProps } from 'gatsby';
 import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Slider from '../components/Slider';
+import * as styles from './project.module.scss';
 
 export type ImageProps = {
   secure_url: string;
@@ -36,9 +37,13 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
 
   return (
     <Layout>
-      <h1>{title}</h1>
-      <MDXRenderer>{body}</MDXRenderer>
-      {images && <Slider images={images} />}
+      <section className={styles.project}>
+        <div className="flow-content">
+          <h1>{title}</h1>
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+        <div>{images && <Slider images={images} />}</div>
+      </section>
     </Layout>
   );
 };

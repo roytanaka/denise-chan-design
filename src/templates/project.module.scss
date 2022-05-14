@@ -1,0 +1,10 @@
+.project {
+  inline-size: min(85rem, 100% - 2rem);
+  margin-inline: auto;
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: minmax(30%, min-content) 1fr;
+  }
+}
