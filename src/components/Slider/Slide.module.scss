@@ -1,0 +1,13 @@
+.slide {
+  display: flex;
+  align-items: center;
+  .img {
+    width: 100%;
+    opacity: 0;
+    aspect-ratio: 6 / 4;
+    transition: opacity 800ms;
+  }
+  [data-is-loaded='true'] {
+    opacity: 1;
+  }
+}

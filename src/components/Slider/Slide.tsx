@@ -1,6 +1,7 @@
 import { getImage, getSrcSet, ImageDataLike } from 'gatsby-plugin-image';
 import React, { useState, useCallback } from 'react';
 import { ImageProps } from '../../templates/project-template';
+import { slide, img } from './Slide.module.scss';
 
 type SlideProps = {
   image: ImageProps;
@@ -23,9 +24,10 @@ export const Slide = ({ image, inView }: SlideProps) => {
 
   return (
     <>
-      <div className="slider__slide">
+      <div className={slide}>
         <img
-          className={`slider__img ${hasLoaded ? 'slider__has-loaded' : ''}`}
+          className={img}
+          data-is-loaded={hasLoaded}
           srcSet={inView ? transformedSrc : TRANSPARENT_IMG}
           alt={image.context?.custom?.alt}
           onLoad={setLoaded}

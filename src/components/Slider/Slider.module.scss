@@ -1,0 +1,44 @@
+.slides {
+  overflow: hidden;
+  margin-inline: auto;
+  max-inline-size: 80ch;
+  position: relative;
+  margin-block-end: var(--size-2);
+}
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%; /* Each slide covers 80% of the viewport */
+  align-items: center;
+}
+.slider-btn {
+  background-color: hsl(var(--gray-2-hsl) / 80%);
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  inline-size: var(--size-8);
+  aspect-ratio: var(--ratio-square);
+  border-radius: var(--radius-round);
+  display: grid;
+  place-content: center;
+  &:disabled {
+    cursor: default;
+  }
+  .icon {
+    width: var(--size-6);
+    fill: none;
+    stroke: currentColor;
+  }
+  &[data-btn='prev'] {
+    left: var(--size-1);
+  }
+  &[data-btn='next'] {
+    right: var(--size-1);
+  }
+}
+
+.thumbs {
+  display: flex;
+  gap: var(--size-1);
+  user-select: none;
+}

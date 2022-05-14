@@ -1,0 +1,36 @@
+.slide-thumb {
+  min-width: 29%;
+  max-height: 6rem;
+  position: relative;
+  flex: 1 1 auto;
+  .thumb-btn {
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      filter: grayscale(100%) contrast(50%) brightness(120%);
+      transition: filter 200ms;
+      transition: all 200ms ease-in-out;
+      &[data-selected='true'] {
+        filter: none;
+      }
+    }
+
+    &:hover img,
+    &:focus img {
+      transform: scale(1.1);
+      filter: grayscale(80%);
+    }
+  }
+  @media screen and (min-width: 400px) {
+    min-width: 21%;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import './Slider.css';
 import { Slide } from './Slide';
+import * as styles from './Slider.module.scss';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline';
 
 import { ImageProps } from '../../templates/project-template';
@@ -74,9 +74,9 @@ const Slider = ({ images }: ImagePropType) => {
   );
 
   return (
-    <div className="slider">
-      <div className="slider__slides" ref={emblaRef}>
-        <div className="slider__container">
+    <>
+      <div className={styles.slides} ref={emblaRef}>
+        <div className={styles.container}>
           {images.map((img, index) => (
             <Slide
               key={img.id}
@@ -86,39 +86,37 @@ const Slider = ({ images }: ImagePropType) => {
           ))}
         </div>
         <button
-          className="embla__btn"
+          className={styles.sliderBtn}
           data-btn="prev"
           onClick={scrollPrev}
           disabled={prevBtnDisabled}
         >
-          <ChevronLeftIcon className="icon" />
+          <ChevronLeftIcon className={styles.icon} />
           <span className="visually-hidden">Previous image</span>
         </button>
         <button
-          className="embla__btn"
+          className={styles.sliderBtn}
           data-btn="next"
           onClick={scrollNext}
           disabled={nextBtnDisabled}
         >
-          <ChevronRightIcon className="icon" />
+          <ChevronRightIcon className={styles.icon} />
           <span className="visually-hidden">Next image</span>
         </button>
       </div>
-      <div className="embla embla--thumb">
-        <div className="slider__slides" ref={thumbsRef}>
-          <div className="slider__container--thumb">
-            {images.map((thumb, index) => (
-              <Thumb
-                key={thumb.id}
-                thumb={thumb}
-                onClick={() => onThumbClick(index)}
-                selected={index === selectedIndex}
-              />
-            ))}
-          </div>
+      <div className={styles.slides} ref={thumbsRef}>
+        <div className={styles.thumbs}>
+          {images.map((thumb, index) => (
+            <Thumb
+              key={thumb.id}
+              thumb={thumb}
+              onClick={() => onThumbClick(index)}
+              selected={index === selectedIndex}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
