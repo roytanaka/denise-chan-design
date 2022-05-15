@@ -1,8 +1,13 @@
+:root {
+  --font-base: 'Open Sans', sans-serif;
+  --font-accent: 'Raleway', sans-serif;
+}
+
 body {
   line-height: 1.5;
   overflow-x: hidden;
   background-color: var(--gray-1);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-base);
 }
 
 #gatsby-focus-wrapper {
@@ -17,7 +22,7 @@ h3,
 h4 {
   font-size: var(--font-size-fluid-3);
   line-height: 1.2;
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-accent);
   font-weight: 100;
 }
 
