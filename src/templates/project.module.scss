@@ -1,8 +1,12 @@
 .project {
-  display: grid;
+  display: flex;
   gap: var(--size-3);
-  grid-template-columns: 1fr;
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: minmax(30%, min-content) 1fr;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .header {
+    flex: 1 0 30%;
+  }
+  .gallery {
+    flex: 1 0 65%;
   }
 }
