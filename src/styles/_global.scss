@@ -4,7 +4,6 @@
 }
 
 body {
-  line-height: 1.5;
   overflow-x: hidden;
   background-color: var(--gray-1);
   font-family: var(--font-base);
@@ -16,11 +15,14 @@ body {
   min-height: 100vh;
 }
 
+h1 {
+  font-size: var(--font-size-fluid-3);
+}
+
 h1,
 h2,
 h3,
 h4 {
-  font-size: var(--font-size-fluid-3);
   line-height: 1.2;
   font-family: var(--font-accent);
   font-weight: 100;
@@ -32,4 +34,5 @@ a {
 
 :is(p, ul, ol, dl, h6) {
   font-size: var(--font-size-1);
+  line-height: var(--font-lineheight-3);
 }

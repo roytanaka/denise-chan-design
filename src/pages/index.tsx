@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Layout from '../components/Layout';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
+import { ImageDataLike } from 'gatsby-plugin-image';
+import Portfolio from '../components/Portfolio';
 
-type ProjectType = {
+export type ProjectType = {
   node: {
     frontmatter: {
       title: string;
@@ -30,7 +31,10 @@ const getProjects = graphql`
             slug
             featuredImage {
               childImageSharp {
-                gatsbyImageData(width: 800, formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(
+                  formats: [AUTO, WEBP, AVIF]
+                  layout: CONSTRAINED
+                )
               }
             }
           }
@@ -49,20 +53,9 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <section className="container">
+      <section>
         <h1 className="visually-hidden">Home: Denise Chan</h1>
-        <ul >
-          {projects.map(({ node }) => {
-            const img = getImage(node.frontmatter.featuredImage);
-            if (!img) return;
-            return (
-              <li key={node.id}>
-                <GatsbyImage image={img} alt="" />
-                <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Portfolio projects={projects} />
       </section>
     </Layout>
   );
