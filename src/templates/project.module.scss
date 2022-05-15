@@ -3,6 +3,7 @@
   gap: var(--size-3);
   flex-direction: row;
   flex-wrap: wrap;
+  margin-block-end: var(--size-10);
   .header {
     flex: 1 0 30%;
   }
