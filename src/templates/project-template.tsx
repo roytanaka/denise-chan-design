@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Slider from '../components/Slider';
 import { project, header, gallery } from './project.module.scss';
+import Portfolio from '../components/Portfolio';
 
 export type ImageProps = {
   secure_url: string;
@@ -30,9 +31,7 @@ type DataProps = {
 
 const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
   const { title, tags } = data.mdx.frontmatter;
-
   const { nodes: images } = data.allCloudinaryMedia;
-
   const { body } = data.mdx;
 
   return (
@@ -43,6 +42,9 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
           <MDXRenderer>{body}</MDXRenderer>
         </header>
         <div className={gallery}>{images && <Slider images={images} />}</div>
+      </section>
+      <section>
+        <Portfolio />
       </section>
     </Layout>
   );
