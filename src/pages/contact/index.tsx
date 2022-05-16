@@ -21,15 +21,15 @@ const Contact = () => {
           <input type="hidden" name="form-name" value="contact" />
           <div className="form-input">
             <label htmlFor="fname">First name</label>
-            <input id="fname" type="text" name="fname" />
+            <input id="fname" type="text" name="fname" required />
           </div>
           <div className="form-input">
             <label htmlFor="lname">Last name</label>
-            <input id="lname" type="text" name="lname" />
+            <input id="lname" type="text" name="lname" required />
           </div>
           <div className="form-input span-2">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" name="email" />
+            <input id="email" type="email" name="email" required />
           </div>
           <div className="form-input span-2">
             <label htmlFor="message">Message</label>
