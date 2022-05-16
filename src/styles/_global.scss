@@ -46,3 +46,19 @@ a {
 :is(:not(:active)):focus-visible {
   outline-offset: 3px;
 }
+
+:is(button, button[type], .btn) {
+  inline-size: fit-content;
+  text-decoration: none;
+  border-radius: var(--radius-1);
+  padding: var(--size-2) var(--size-4);
+  background-color: transparent;
+  border: var(--border-size-2) solid var(--gray-6);
+  transition: all 200ms var(--ease-1);
+}
+
+:is(button, button[type], .btn):hover,
+:is(button, button[type], .btn):focus-visible {
+  background-color: var(--gray-6);
+  color: var(--gray-0);
+}

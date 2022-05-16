@@ -14,20 +14,6 @@
     border-radius: var(--radius-1);
     padding: var(--size-2) var(--size-3);
   }
-
-  :is(button, button[type]) {
-    border-radius: var(--radius-1);
-    padding: var(--size-2) var(--size-4);
-    background-color: transparent;
-    border: var(--border-size-2) solid var(--gray-6);
-    transition: all 200ms var(--ease-1);
-  }
-
-  :is(button, button[type]):hover,
-  :is(button, button[type]):focus-visible {
-    background-color: var(--gray-6);
-    color: var(--gray-0);
-  }
 }
 .form-input {
   display: grid;

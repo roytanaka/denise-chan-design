@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 
 const Contact = () => {
   return (
@@ -15,6 +15,7 @@ const Contact = () => {
           netlify-honeypot="bot-field"
           data-netlify="true"
           name="contact"
+          action="/contact/thank-you"
         >
           <input type="hidden" name="bot-field" />
           <input type="hidden" name="form-name" value="contact" />
