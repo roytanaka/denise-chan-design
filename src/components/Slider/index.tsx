@@ -91,7 +91,7 @@ const Slider = ({ images }: ImagePropType) => {
           onClick={scrollPrev}
           disabled={prevBtnDisabled}
         >
-          <ChevronLeftIcon className={styles.icon} />
+          <ChevronLeftIcon className="icon" />
           <span className="visually-hidden">Previous image</span>
         </button>
         <button
@@ -100,7 +100,7 @@ const Slider = ({ images }: ImagePropType) => {
           onClick={scrollNext}
           disabled={nextBtnDisabled}
         >
-          <ChevronRightIcon className={styles.icon} />
+          <ChevronRightIcon className="icon" />
           <span className="visually-hidden">Next image</span>
         </button>
       </div>
