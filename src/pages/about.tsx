@@ -1,10 +1,13 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout';
 
 const About = () => {
   return (
     <Layout>
+      <Helmet title="About" />
+
       <section className="wrapper about-content">
         <div className="flow-content">
           <h1>About me</h1>

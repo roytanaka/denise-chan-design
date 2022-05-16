@@ -4,7 +4,7 @@ import type { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'Denise Chan',
-    titleTemplate: '%s · The Real Hero',
+    titleTemplate: '%s · Denise Chan',
     description: 'Senior Visual Designer',
     siteUrl: 'https://www.denisechan.design',
     // image: "/snape.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.

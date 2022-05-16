@@ -5,6 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Slider from '../components/Slider';
 import { project, header, gallery } from './project.module.scss';
 import Portfolio from '../components/Portfolio';
+import { Helmet } from 'react-helmet';
 
 export type ImageProps = {
   secure_url: string;
@@ -36,6 +37,7 @@ const ProjectTemplate = ({ data }: PageProps<DataProps>) => {
 
   return (
     <Layout>
+      <Helmet title={title} />
       <section className={`${project} container`}>
         <header className={`${header} flow-content`}>
           <h1>{title}</h1>
