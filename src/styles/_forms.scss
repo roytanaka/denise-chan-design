@@ -1,0 +1,42 @@
+.form {
+  display: grid;
+  inline-size: min(42rem, 100%);
+  margin-block-start: var(--size-8);
+  margin-inline: auto;
+  gap: var(--size-3) var(--size-2);
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  input {
+    width: 100%;
+  }
+  :is(textarea, select, input:not(button, button[type], input[type='button'], input[type='submit'], input[type='reset'])) {
+    background-color: var(--surface-2);
+    border-radius: var(--radius-1);
+    padding: var(--size-2) var(--size-3);
+  }
+
+  :is(button, button[type]) {
+    border-radius: var(--radius-1);
+    padding: var(--size-2) var(--size-4);
+    background-color: transparent;
+    border: var(--border-size-2) solid var(--gray-6);
+    transition: all 200ms var(--ease-1);
+  }
+
+  :is(button, button[type]):hover,
+  :is(button, button[type]):focus-visible {
+    background-color: var(--gray-6);
+    color: var(--gray-0);
+  }
+}
+.form-input {
+  display: grid;
+  gap: var(--size-1);
+  grid-column: span 2;
+  &.span-2 {
+    grid-column: span 2;
+  }
+  @media (--sm-n-above) {
+    grid-column: auto;
+  }
+}

@@ -36,3 +36,13 @@ a {
   font-size: var(--font-size-1);
   line-height: var(--font-lineheight-3);
 }
+
+:focus-visible {
+  outline-color: var(--gray-5);
+  outline-style: solid;
+  outline-width: var(--border-size-2);
+}
+
+:is(:not(:active)):focus-visible {
+  outline-offset: 3px;
+}
