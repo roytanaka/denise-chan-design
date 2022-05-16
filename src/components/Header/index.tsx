@@ -3,7 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import './header.scss';
 
-const invalidPaths = ['/about', '/contact'];
+const invalidPaths = ['/about/', '/contact/'];
 
 const isCurrent = ({ location }: { location: Location }) => {
   if (!invalidPaths.includes(location.pathname)) {
@@ -18,8 +18,8 @@ const Header = ({ ...props }) => {
         <Link getProps={isCurrent} {...props} to="/">
           Work
         </Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/about/">About</Link>
+        <Link to="/contact/">Contact</Link>
       </nav>
       <Link className="main-header__logo" to="/">
         <Logo />
