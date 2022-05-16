@@ -1,0 +1,15 @@
+.footer {
+  padding-block: var(--size-5);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--size-2);
+  nav {
+    display: flex;
+    gap: var(--size-3);
+  }
+  @media (--sm-n-above) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
