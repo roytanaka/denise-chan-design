@@ -9,7 +9,15 @@ const Contact = () => {
 
       <section className="container">
         <h1>get in touch</h1>
-        <form className="form" name="contact" method="POST" data-netlify="true">
+        <form
+          className="form"
+          method="post"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+          name="contact"
+        >
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="form-name" value="contact" />
           <div className="form-input">
             <label htmlFor="fname">First name</label>
             <input id="fname" type="text" name="fname" />
